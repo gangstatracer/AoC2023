@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 
 namespace AoC2023.Day1;
 
@@ -27,7 +28,7 @@ public class Day1
             sum += firstDigit * 10 + lastDigit;
         }
 
-        Assert.That(sum, Is.EqualTo(expected));
+        sum.Should().Be(expected);
     }
 
     [TestCase("Day1/input.txt", 52834)]
@@ -78,6 +79,6 @@ public class Day1
             Console.WriteLine(sum);
         }
 
-        Assert.That(sum, Is.EqualTo(expected));
+        sum.Should().Be(expected);
     }
 }
