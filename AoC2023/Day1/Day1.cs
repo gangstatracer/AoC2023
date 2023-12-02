@@ -1,7 +1,4 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
-
-namespace AoC2023.Day1;
+﻿namespace AoC2023.Day1;
 
 public class Day1
 {
