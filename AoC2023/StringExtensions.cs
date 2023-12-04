@@ -6,7 +6,7 @@ public static class StringExtensions
     {
         var parts = value.Split(separator);
         if (parts.Length != 2)
-            throw new Exception($"Parts lenght is {parts.Length}");
+            throw new Exception($"Parts lenght is {parts.Length}. Original value is '{value}'");
         return (parts[0], parts[1]);
     }
 
