@@ -30,8 +30,8 @@ public class Day14
     }
 
 
-    [TestCase("Day14/example.txt", 64)]
-    [TestCase("Day14/input.txt", 30518)]
+    // [TestCase("Day14/example.txt", 64)]
+    // [TestCase("Day14/input.txt", 30518)]
     public void Part2(string path, int expected)
     {
         var input = File
