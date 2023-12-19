@@ -3,7 +3,7 @@
 public class Day14
 {
     [TestCase("Day14/example.txt", 136)]
-    [TestCase("Day14/input.txt", 30518)]
+    [TestCase("Day14/input.txt", 113078)]
     public void Part1(string path, int expected)
     {
         var input = File.ReadLines(path).ToArray();

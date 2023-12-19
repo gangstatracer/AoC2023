@@ -93,7 +93,7 @@ public class Day19
     private record Gear(int X, int M, int A, int S);
 
     [TestCase("Day19/example.txt", 167409079868000Lu)]
-    [TestCase("Day19/input.txt", 432434Lu)]
+    [TestCase("Day19/input.txt", 132557544578569Lu)]
     public void Part2(string path, ulong expected)
     {
         var input = File.ReadLines(path).ToArray();

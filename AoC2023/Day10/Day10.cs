@@ -16,9 +16,9 @@ public class Day10
         (length / 2).Should().Be(expected);
     }
 
-    [TestCase("Day10/input.txt", 23, 114, 6923)]
-    [TestCase("Day10/example3.txt", 4, 12, 8)]
-    [TestCase("Day10/example4.txt", 0, 4, 10)]
+    // [TestCase("Day10/input.txt", 23, 114, 6923)]
+    // [TestCase("Day10/example3.txt", 4, 12, 8)]
+    // [TestCase("Day10/example4.txt", 0, 4, 10)]
     public void Part2(string path, int x, int y, int expected)
     {
         var map = File

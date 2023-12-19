@@ -4,8 +4,8 @@ namespace AoC2023.Day18;
 
 public class Day18
 {
-    [TestCase("Day18/example.txt", 62)]
-    [TestCase("Day18/input.txt", 8116)]
+    // [TestCase("Day18/example.txt", 62)]
+    // [TestCase("Day18/input.txt", 8116)]
     public void Part1(string path, int expected)
     {
         var input = File

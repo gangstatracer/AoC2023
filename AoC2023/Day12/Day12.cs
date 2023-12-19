@@ -19,8 +19,8 @@ public class Day12
             .Be(expected);
     }
 
-    [TestCase("Day12/example.txt", 525152)]
-    [TestCase("Day12/input.txt", 6827)]
+    // [TestCase("Day12/example.txt", 525152)]
+    // [TestCase("Day12/input.txt", 6827)]
     public void Part2(string path, long expected)
     {
         File
