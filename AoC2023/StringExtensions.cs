@@ -25,4 +25,14 @@ public static class StringExtensions
         var (part0, part1) = value.Halve(separator);
         return (part0Parser == null ? part0 : part0Parser(part0), part1Parser(part1));
     }
+
+    public static (TPart0, TPart1) Halve<TPart0, TPart1>(
+        this string value,
+        string separator,
+        Func<string, TPart0> part0Parser,
+        Func<string, TPart1> part1Parser)
+    {
+        var (part0, part1) = value.Halve(separator);
+        return (part0Parser(part0), part1Parser(part1));
+    }
 }

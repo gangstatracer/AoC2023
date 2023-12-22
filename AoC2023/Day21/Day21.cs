@@ -3,7 +3,7 @@
 public class Day21
 {
     [TestCase("Day21/example.txt", 5, 5, 6, 16)]
-    [TestCase("Day21/input.txt", 65, 65, 64, 432434)]
+    [TestCase("Day21/input.txt", 65, 65, 64, 3770)]
     public void Part1(string path, int x, int y, int limit, int expected)
     {
         var input = File
