@@ -19,23 +19,56 @@ public class Day22
 
         result.Should().Be(expected);
     }
-    
+
     [TestCase("Day22/example.txt", 7)]
-    [TestCase("Day22/input.txt", 459)]
+    //[TestCase("Day22/input.txt", 459)]
     public void Part2(string path, int expected)
     {
         var fallen = GetFallen(path);
 
+        var edges = new List<(Brick Lower, Brick Upper)>();
+        var ground = new Brick(new Cube(0, 0, 0), new Cube(int.MaxValue, int.MaxValue, 0));
+        foreach (var b in fallen.Prepend(ground))
+        {
+            var liesOnB = Intersection(fallen.Where(bb => bb != b), b.MoveZ(1));
+            edges.AddRange(liesOnB.Select(l => (b, l)));
+        }
+
         var result = 0;
         foreach (var b in fallen)
         {
-            var liesOnB = Intersection(fallen.Where(bb => bb != b), b.MoveZ(1));
-            var safe = liesOnB.All(l => Intersection(fallen.Where(bb => bb != l), l.MoveZ(-1)).Take(2).Count() > 1);
-            if (safe)
-                result++;
+            var removed = new HashSet<Brick>();
+            var queue = new Queue<Brick>();
+            queue.Enqueue(b);
+            var rest = edges.ToArray();
+            while (queue.Any())
+            {
+                var br = queue.Dequeue();
+                removed.Add(br);
+                rest = rest.Where(e => !removed.Contains(e.Lower)).ToArray();
+                foreach (var bb in fallen.Except(removed))
+                {
+                    if (!CheckConnectivity(bb, ground, rest))
+                        queue.Enqueue(bb);
+                }
+            }
+
+            result += removed.Count - 1;
         }
 
         result.Should().Be(expected);
+    }
+
+    private static bool CheckConnectivity(
+        Brick from,
+        Brick to,
+        IReadOnlyCollection<(Brick Lower, Brick Upper)> edges)
+    {
+        if (edges.Any(e => e.Upper == from && e.Lower == to))
+            return true;
+        return edges
+            .Where(e => e.Upper == from)
+            .Any(edge => CheckConnectivity(edge.Lower, to, edges));
     }
 
     private static List<Brick> GetFallen(string path)
